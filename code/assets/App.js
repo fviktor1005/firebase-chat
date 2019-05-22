@@ -1,20 +1,6 @@
-import React, { useState, useEffect } from "react";
-import firebase from "firebase";
-import { firebaseConfig } from "./firebase.config";
+import React from 'react';
 
-firebase.initializeApp(firebaseConfig);
-
-const db = firebase.firestore();
-
-const App = () => {
-  const [channels, setChannels] = useState([]);
-
-  useEffect(() => {
-    return db.collection("channels").onSnapshot(snapshot => {
-      setChannels([...snapshot.docs]);
-    });
-  }, []);
-
+function App() {
   return (
     <div className="App">
       <div className="Nav">
@@ -32,11 +18,10 @@ const App = () => {
           </div>
         </div>
         <nav className="ChannelNav">
-          {channels.map(channel => (
-            <a key={channel.id} href={`/channel/${channel.id}`}>
-              {channel.id}
-            </a>
-          ))}
+          <a href="/channel/awesome"># awesome</a>
+          <a className="active" href="/channel/general">
+            # general
+          </a>
         </nav>
       </div>
       <div className="Channel">
@@ -76,9 +61,21 @@ const App = () => {
             <input className="ChatInput" placeholder="Message #general" />
           </div>
         </div>
+        <div className="Members">
+          <div>
+            <div className="Member">
+              <div className="MemberStatus offline" />
+              Ryan Florence
+            </div>
+            <div className="Member">
+              <div className="MemberStatus online" />
+              cleverbot
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
-};
+}
 
 export default App;
