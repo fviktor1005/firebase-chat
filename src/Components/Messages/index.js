@@ -83,7 +83,9 @@ const Messages = ({ channelName }) => {
                     </span>
                   </div>
                 )}
-                <div className="MessageContent">{message.text}</div>
+                <div className="MessageContent">
+                  {JSON.stringify(message.text)}
+                </div>
               </div>
             </div>
           </div>
