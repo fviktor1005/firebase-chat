@@ -25,3 +25,6 @@ yarn-error.log*
 code/src.zip
 code/assets.zip
 chat-d099a-1026fc221003.json
+
+# custom
+package-lock.json
